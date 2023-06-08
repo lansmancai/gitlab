@@ -50,6 +50,7 @@ while read oldVersion newVersion branch; do
         unset GIT_DIR
         unset GIT_QUARANTINE_PATH
 		cd /home/git-check/code
+		rm -rf /home/git-check/code/target
 		/usr/local/maven/bin/mvn dependency:copy-dependencies
 		/home/git-check/dependency-check/bin/dependency-check.sh -s /home/git-check/code -o /home/git-check
 		result=$(/usr/local/bin/python3 /home/git-check/result.py /home/git-check/dependency-check-report.html 2>&1)
